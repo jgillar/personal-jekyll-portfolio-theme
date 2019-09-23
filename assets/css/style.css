@@ -13,7 +13,8 @@ body {
   color: #ffffff;
 }
 h1,
-h2 {
+h2,
+h3 {
   font-family: "Amaranth", sans-serif;
   letter-spacing: 1px;
   margin-bottom: 0.5em;
@@ -30,9 +31,9 @@ h2 {
   line-height: 1.25;
 }
 h3 {
-  font-size: 1.15em;
+  font-size: 1.125em;
+  font-weight: normal;
   line-height: 1.35;
-  margin: 0;
 }
 a {
   color: #9e4770;
@@ -45,16 +46,20 @@ p {
   margin-top: 0px;
   margin-bottom: 1em;
 }
+ul {
+  margin: 0 0 1em 1.5em;
+  padding: 0px;
+}
+li {
+  margin-bottom: 0.05em;
+}
 
 .wrapper {
   margin: 0px auto;
 }
 .main-section {
   background: #eef0f2;
-  padding: 1em 2em;
-}
-.main-section:nth-child(odd) {
-  background: #f4faff;
+  padding: 2em 2em;
 }
 .content-inner {
   margin: 0px auto;
@@ -100,7 +105,7 @@ p {
   background: linear-gradient(270deg, #9e4770, #3c225f);
   background-size: 400% 400%;
   color: #f4faff;
-  padding: 1em 2em 1em 2em;
+  padding: 2em 2em 1em 2em;
   text-align: center;
   -webkit-animation: gradientBackground 30s ease infinite;
   -moz-animation: gradientBackground 30s ease infinite;
@@ -110,8 +115,8 @@ p {
   background: #201a23;
   color: #f4faff;
 }
-#main-header a {
-  color: #f4faff;
+#main-header p {
+  margin-bottom: 2em;
 }
 #main-navigation ul {
   align-items: center;
@@ -123,11 +128,43 @@ p {
 }
 #main-navigation li {
   flex: 1;
+  margin: 0;
+  padding: 0;
 }
 #main-navigation a {
-  display: block;
+  box-sizing: border-box;
+  color: #f4faff;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  position: relative;
+  text-align: center;
+  transition: color 0.3s;
+  z-index: 1;
+}
+#main-navigation a:hover {
+  color: #3c225f;
+}
+#main-navigation a::before {
+  content: " ";
+  background: #f4faff;
+  border-radius: 50%;
+  height: 0px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+  width: 0px;
+  z-index: -1;
+  -webkit-animation: gradientBackground 5s ease infinite;
+  -moz-animation: gradientBackground 5s ease infinite;
+  animation: gradientBackground 5s ease infinite;
+}
+#main-navigation a:hover::before {
   height: 100%;
   width: 100%;
+  opacity: 1;
 }
 /* end Header */
 
@@ -137,13 +174,12 @@ p {
 }
 /* end about section */
 
+/* Skill section */
+#skills ul {
+  display: grid;
+}
+
 /* Media queries */
-@media all and (min-width: 1024px) and (max-width: 1280px) {
-}
-
-@media all and (min-width: 768px) and (max-width: 1024px) {
-}
-
 @media all and (max-width: 768px) {
   #main-header span {
     display: block;
@@ -155,5 +191,4 @@ p {
     font-size: 2.3rem;
   }
 }
-
 /* end media queries */
