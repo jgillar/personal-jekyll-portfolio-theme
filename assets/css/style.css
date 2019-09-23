@@ -31,8 +31,9 @@ h2 {
   line-height: 1.25;
 }
 h3 {
-  font-size: 1.125em;
-  font-weight: normal;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.05em;
+  font-weight: bold;
   line-height: 1.35;
 }
 a {
@@ -147,7 +148,7 @@ li {
 #main-navigation a::before {
   content: " ";
   background: #f4faff;
-  border-radius: 50%;
+  border-radius: 1em;
   height: 0px;
   left: 50%;
   opacity: 0;
@@ -157,9 +158,20 @@ li {
   transition: all 0.3s;
   width: 0px;
   z-index: -1;
-  -webkit-animation: gradientBackground 5s ease infinite;
-  -moz-animation: gradientBackground 5s ease infinite;
-  animation: gradientBackground 5s ease infinite;
+}
+#main-navigation a::after {
+  content: " ";
+  background: #f4faff;
+  border-radius: 1em;
+  height: 0px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+  width: 0px;
+  z-index: -1;
 }
 #main-navigation a:hover::before {
   height: 100%;
@@ -176,7 +188,28 @@ li {
 
 /* Skill section */
 #skills ul {
+  background: #ffffff;
+  border-radius: 1em;
+  box-shadow: 5px 5px #dad2d877;
   display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  list-style-type: none;
+  margin: 0px;
+  padding: 0.5em;
+}
+.skills-section:first-child {
+  margin-right: 2em;
+}
+#skills li {
+  padding: 0.5em;
+}
+#skills-container {
+  display: flex;
+}
+#skills-container section {
+  flex: 1;
 }
 
 /* Media queries */
@@ -184,11 +217,20 @@ li {
   #main-header span {
     display: block;
   }
+  #skills-container section:first-child {
+    margin-right: 0;
+    margin-bottom: 1em;
+  }
+  #skills-container {
+    display: block;
+  }
 }
-
 @media all and (max-width: 480px) {
   body {
     font-size: 2.3rem;
+  }
+  #skills ul {
+    display: block;
   }
 }
 /* end media queries */
