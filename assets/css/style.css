@@ -3,7 +3,7 @@ html {
   font-size: 62.5%;
 }
 body {
-  background: #f4faff;
+  background: #3c225f;
   font-family: "Titillium Web", sans-serif;
   font-size: 2.5rem;
   line-height: 1.6;
@@ -69,6 +69,18 @@ li {
 }
 
 /* Header section */
+/*slide in animation for header text*/
+@keyframes slideDown {
+  0% {
+    transform: translate(0, -0.5em);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+/*background animation for header*/
 @-webkit-keyframes gradientBackground {
   0% {
     background-position: 0% 50%;
@@ -102,22 +114,56 @@ li {
     background-position: 0% 50%;
   }
 }
+/*animation for my name turning blue*/
+@keyframes lightUp {
+  0% {
+    color: #f4faff;
+  }
+  100% {
+    color: #2ce3e5;
+  }
+}
 #main-header {
-  background: linear-gradient(270deg, #9e4770, #3c225f);
+  background: radial-gradient(
+      farthest-side at bottom left,
+      #dc4c6a55,
+      transparent
+    ),
+    radial-gradient(farthest-corner at top right, #321c4e55, transparent);
   background-size: 400% 400%;
+  box-sizing: border-box;
   color: #f4faff;
+  height: 100vh;
   padding: 2em 2em 1em 2em;
   text-align: center;
-  -webkit-animation: gradientBackground 30s ease infinite;
-  -moz-animation: gradientBackground 30s ease infinite;
-  animation: gradientBackground 30s ease infinite;
+  -webkit-animation: gradientBackground 15s ease infinite;
+  -moz-animation: gradientBackground 15s ease infinite;
+  animation: gradientBackground 15s ease infinite;
+}
+header h1,
+header p {
+  animation: slideDown 1s;
 }
 #main-header *::selection {
-  background: #201a23;
-  color: #f4faff;
+  background: #f4faff;
+  color: #201a23;
+}
+#main-header .wrapper {
+  justify-content: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+#main-header .content-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 #main-header p {
   margin-bottom: 2em;
+}
+#main-navigation {
+  align-self: stretch;
 }
 #main-navigation ul {
   align-items: center;
@@ -159,24 +205,15 @@ li {
   width: 0px;
   z-index: -1;
 }
-#main-navigation a::after {
-  content: " ";
-  background: #f4faff;
-  border-radius: 1em;
-  height: 0px;
-  left: 50%;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s;
-  width: 0px;
-  z-index: -1;
-}
 #main-navigation a:hover::before {
   height: 100%;
   width: 100%;
   opacity: 1;
+}
+#main-header span {
+  color: #f4faff;
+  animation: lightUp 0.75s 1.25s;
+  animation-fill-mode: forwards;
 }
 /* end Header */
 
@@ -212,8 +249,20 @@ li {
   flex: 1;
 }
 
+#contact {
+  background: #201a23;
+  color: #f4faff;
+}
+
+#contact h2 {
+  color: #f4faff;
+}
+
 /* Media queries */
 @media all and (max-width: 768px) {
+  body {
+    font-size: 2.125rem;
+  }
   #main-header span {
     display: block;
   }
@@ -227,7 +276,7 @@ li {
 }
 @media all and (max-width: 480px) {
   body {
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
   #skills ul {
     display: block;
