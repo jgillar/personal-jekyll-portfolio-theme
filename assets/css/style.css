@@ -19,6 +19,7 @@ h3 {
   letter-spacing: 1px;
   margin-bottom: 0.5em;
   margin-top: 0px;
+  text-align: center;
 }
 h1 {
   color: #f4faff;
@@ -45,7 +46,7 @@ a:hover {
 }
 p {
   margin-top: 0px;
-  margin-bottom: 1em;
+  margin-bottom: 0.15em;
 }
 ul {
   margin: 0 0 1em 1.5em;
@@ -69,7 +70,7 @@ li {
 }
 
 /* Header section */
-/*slide in animation for header text*/
+/* slide in animation for header text*/
 @keyframes slideDown {
   0% {
     transform: translate(0, -0.5em);
@@ -80,29 +81,18 @@ li {
     opacity: 1;
   }
 }
+/* slide up animation for navigation links */
+@keyframes slideUp {
+  0% {
+    transform: translate(0, 0.5em);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
 /*background animation for header*/
-@-webkit-keyframes gradientBackground {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@-moz-keyframes gradientBackground {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 @keyframes gradientBackground {
   0% {
     background-position: 0% 50%;
@@ -133,15 +123,12 @@ li {
   background-size: 400% 400%;
   box-sizing: border-box;
   color: #f4faff;
-  height: 100vh;
   padding: 2em 2em 1em 2em;
   text-align: center;
-  -webkit-animation: gradientBackground 15s ease infinite;
-  -moz-animation: gradientBackground 15s ease infinite;
   animation: gradientBackground 15s ease infinite;
 }
-header h1,
-header p {
+#main-header h1,
+#main-header p {
   animation: slideDown 1s;
 }
 #main-header *::selection {
@@ -154,7 +141,11 @@ header p {
   flex: 1;
   flex-direction: column;
 }
-#main-header .content-inner {
+/* make header full size only on home page */
+.home #main-header {
+  height: 100vh;
+}
+.home #main-header .content-inner {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -188,8 +179,25 @@ header p {
   transition: color 0.3s;
   z-index: 1;
 }
+#main-navigation li {
+  animation-fill-mode: forwards !important; /* fill mode styles DO NOT override existing styles */
+  opacity: 0;
+  animation: slideUp 0.5s;
+}
 #main-navigation a:hover {
   color: #3c225f;
+}
+#main-navigation li:nth-child(1) {
+  animation-delay: 0.3s;
+}
+#main-navigation li:nth-child(2) {
+  animation-delay: 0.4s;
+}
+#main-navigation li:nth-child(3) {
+  animation-delay: 0.5s;
+}
+#main-navigation li:nth-child(4) {
+  animation-delay: 0.6s;
 }
 #main-navigation a::before {
   content: " ";
@@ -258,6 +266,28 @@ header p {
   color: #f4faff;
 }
 
+/* project pages */
+.screenshot-list {
+  margin: 0px;
+  padding: 0px;
+}
+.screenshot-list img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.screenshot-row {
+  display: flex;
+}
+.screenshow-row div:not(last-child) {
+  margin-right: 1em;
+}
+.screenshot-twothirds {
+  flex: 2;
+}
+.screenshot-onethird {
+  flex: 1;
+}
 /* Media queries */
 @media all and (max-width: 768px) {
   body {
