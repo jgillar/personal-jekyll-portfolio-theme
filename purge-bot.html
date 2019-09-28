@@ -1,0 +1,57 @@
+---
+layout: project
+permalink: /projects/purge-bot
+title: Amazon Purge Checker Reddit Bot
+---
+
+<section id="about" class="main-section">
+	<div class="content-inner">
+		<h2>{{ page.title }}</h2>
+		<p>
+			The Amazon Purge Checker Reddit Bot, usually just called Purge Bot,
+			is a script that scrapes data from
+			<a href="https://www.amazon.com/review/top-reviewers">
+				Amazon's Top 10,000 Reviewers list
+			</a>
+			and determines whose reviews were "purged" or reinstated on the
+			current day and then posts that information to
+			<a href="https://www.reddit.com/r/TheGreatAmazonPurge/">Reddit</a>.
+			Occasionally Amazon will remove all of a reviewer's reviews; this is
+			referred to as "purging." It is usually done when a reviewer breaks
+			Amazon's Terms of Service in some way.
+		</p>
+		<p>
+			This script was made in 2016 when Amazon was receiving backlash for
+			its influx of incentivized reviews. Its goal was to see if Amazon
+			was taking any kind of action against the issue.
+		</p>
+		<p class="disclaimer">
+			Disclaimer: Purge Bot is not affiliated with Amazon in any way
+			whatsoever.
+		</p>
+		<p class="tech-list">Technologies used:</p>
+		<ul class="tech-list">
+			<li>PHP</li>
+			<li>MySQL</li>
+		</ul>
+		<p class="project-link-container">
+			<a
+				href="https://www.reddit.com/r/TheGreatAmazonPurge/"
+				class="project-link really-fancy-link"
+			>
+				View on Reddit
+			</a>
+		</p>
+	</div>
+</section>
+<section class="main-section">
+	<div class="content-inner">
+		<div class="screenshot-list">
+			<div class="screenshot-row">
+				<div class="screenshot-full">
+					<img src="/assets/screenshots/purgebot/purgebot-md.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,315 +1,428 @@
+:root {
+	--purple: #3c225f;
+	--black: #201a23;
+	--lightblue: #2ce3e5;
+	--pink: #dd4f6c;
+	--white: #f4faff;
+}
 html {
-  color: #201a23;
-  font-size: 62.5%;
+	color: var(--black);
+	font-size: 62.5%;
 }
 body {
-  background: #3c225f;
-  font-family: "Titillium Web", sans-serif;
-  font-size: 2.5rem;
-  line-height: 1.6;
+	background: var(--purple);
+	font-family: "Titillium Web", sans-serif;
+	font-size: 2.5rem;
+	line-height: 1.6;
 }
 *::selection {
-  background-color: #9e4770;
-  color: #ffffff;
+	background-color: var(--pink);
+	color: var(--white);
 }
 h1,
 h2,
 h3 {
-  font-family: "Amaranth", sans-serif;
-  letter-spacing: 1px;
-  margin-bottom: 0.5em;
-  margin-top: 0px;
-  text-align: center;
+	font-family: "Amaranth", sans-serif;
+	letter-spacing: 1px;
+	margin-bottom: 0.5em;
+	margin-top: 0px;
+	text-align: center;
 }
 h1 {
-  color: #f4faff;
-  font-size: 2.5em;
-  line-height: 1.125;
+	color: var(--white);
+	font-size: 2.5em;
+	line-height: 1.125;
 }
 h2 {
-  color: #3c225f;
-  font-size: 1.5em;
-  line-height: 1.25;
+	color: var(--purple);
+	font-size: 1.5em;
+	line-height: 1.25;
 }
 h3 {
-  font-family: "Titillium Web", sans-serif;
-  font-size: 1.05em;
-  font-weight: bold;
-  line-height: 1.35;
+	font-family: "Titillium Web", sans-serif;
+	font-size: 1.05em;
+	font-weight: bold;
+	line-height: 1.35;
 }
 a {
-  color: #9e4770;
-  text-decoration: none;
+	color: var(--pink);
+	text-decoration: none;
+	transition: all 0.5s;
 }
-a:hover {
-  color: #17e1e3;
+main a:hover {
+	background: var(--white);
+	color: #10a3a5;
+	opacity: 0.9;
 }
 p {
-  margin-top: 0px;
-  margin-bottom: 0.15em;
+	margin-top: 0px;
+	margin-bottom: 0.5em;
 }
 ul {
-  margin: 0 0 1em 1.5em;
-  padding: 0px;
+	margin: 0 0 1em 1.5em;
+	padding: 0px;
 }
 li {
-  margin-bottom: 0.05em;
+	margin-bottom: 0.05em;
 }
 
 .wrapper {
-  margin: 0px auto;
+	margin: 0px auto;
 }
 .main-section {
-  background: #eef0f2;
-  padding: 2em 2em;
+	background: #eef0f2;
+	padding: 2em 2em;
 }
 .content-inner {
-  margin: 0px auto;
-  max-width: 1200px;
-  width: 100%;
+	margin: 0px auto;
+	max-width: 1200px;
+	width: 100%;
 }
-
-/* Header section */
-/* slide in animation for header text*/
+/* links with that cool animated background */
+.really-fancy-link::before {
+	content: " ";
+	background: var(--white);
+	border-radius: 1em;
+	height: 0px;
+	left: 50%;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.3s;
+	width: 0px;
+	z-index: -1;
+}
+.really-fancy-link:hover::before {
+	height: 100%;
+	width: 100%;
+	opacity: 1;
+}
+/*  Header section  */
+/*  slide in animation for header text  */
 @keyframes slideDown {
-  0% {
-    transform: translate(0, -0.5em);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
+	0% {
+		transform: translate(0, -0.5em);
+		opacity: 0;
+	}
+	100% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
 }
-/* slide up animation for navigation links */
+/*  slide up animation for navigation links */
 @keyframes slideUp {
-  0% {
-    transform: translate(0, 0.5em);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
+	0% {
+		transform: translate(0, 0.5em);
+		opacity: 0;
+	}
+	100% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
 }
-/*background animation for header*/
+/*  background animation for header */
 @keyframes gradientBackground {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
-/*animation for my name turning blue*/
+/*  animation for my name turning blue  */
 @keyframes lightUp {
-  0% {
-    color: #f4faff;
-  }
-  100% {
-    color: #2ce3e5;
-  }
+	0% {
+		color: var(--white);
+	}
+	100% {
+		color: var(--lightblue);
+	}
+}
+/*  this is a hacky way to avoid using animation-fill-mode: forwards  
+    since that prevents styling after the animation is done */
+@keyframes stayWhite {
+	0% {
+		color: var(--white);
+	}
+	100% {
+		color: var(--white);
+	}
 }
 #main-header {
-  background: radial-gradient(
-      farthest-side at bottom left,
-      #dc4c6a55,
-      transparent
-    ),
-    radial-gradient(farthest-corner at top right, #321c4e55, transparent);
-  background-size: 400% 400%;
-  box-sizing: border-box;
-  color: #f4faff;
-  padding: 2em 2em 1em 2em;
-  text-align: center;
-  animation: gradientBackground 15s ease infinite;
+	background: radial-gradient(
+			farthest-side at bottom left,
+			#dc4c6a77,
+			transparent
+		),
+		radial-gradient(farthest-corner at top right, #321c4e, transparent);
+	background-size: 400% 400%;
+	box-sizing: border-box;
+	color: var(--white);
+	padding: 2em 2em 1em 2em;
+	text-align: center;
+	animation: gradientBackground 15s ease infinite;
 }
 #main-header h1,
 #main-header p {
-  animation: slideDown 1s;
+	animation: slideDown 1s;
 }
 #main-header *::selection {
-  background: #f4faff;
-  color: #201a23;
+	background: var(--white);
+	color: var(--purple);
 }
 #main-header .wrapper {
-  justify-content: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+	justify-content: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 }
 /* make header full size only on home page */
 .home #main-header {
-  height: 100vh;
+	height: 100vh;
 }
 .home #main-header .content-inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+#main-header h1 a {
+	color: var(--lightblue);
+	animation: stayWhite 1s, lightUp 0.75s 1s;
+	transition: all 0.5s;
+	text-decoration: underline;
+	text-decoration-color: transparent;
+}
+
+#main-header h1 a:hover {
+	color: var(--pink);
+	text-decoration-color: var(--pink);
 }
 #main-header p {
-  margin-bottom: 2em;
+	margin-bottom: 2em;
 }
 #main-navigation {
-  align-self: stretch;
+	align-self: stretch;
 }
 #main-navigation ul {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
 }
 #main-navigation li {
-  flex: 1;
-  margin: 0;
-  padding: 0;
+	flex: 1;
+	margin: 0;
+	padding: 0;
 }
 #main-navigation a {
-  box-sizing: border-box;
-  color: #f4faff;
-  display: inline-block;
-  padding: 0.25em 0.5em;
-  position: relative;
-  text-align: center;
-  transition: color 0.3s;
-  z-index: 1;
+	box-sizing: border-box;
+	color: var(--white);
+	display: inline-block;
+	padding: 0.25em 0.5em;
+	position: relative;
+	text-align: center;
+	transition: color 0.3s;
+	z-index: 1;
 }
 #main-navigation li {
-  animation-fill-mode: forwards !important; /* fill mode styles DO NOT override existing styles */
-  opacity: 0;
-  animation: slideUp 0.5s;
+	animation-fill-mode: forwards !important; /* fill mode styles DO NOT override existing styles */
+	opacity: 0;
+	animation: slideUp 0.5s;
 }
 #main-navigation a:hover {
-  color: #3c225f;
+	color: var(--purple);
 }
 #main-navigation li:nth-child(1) {
-  animation-delay: 0.3s;
+	animation-delay: 0.3s;
 }
 #main-navigation li:nth-child(2) {
-  animation-delay: 0.4s;
+	animation-delay: 0.4s;
 }
 #main-navigation li:nth-child(3) {
-  animation-delay: 0.5s;
+	animation-delay: 0.5s;
 }
 #main-navigation li:nth-child(4) {
-  animation-delay: 0.6s;
-}
-#main-navigation a::before {
-  content: " ";
-  background: #f4faff;
-  border-radius: 1em;
-  height: 0px;
-  left: 50%;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s;
-  width: 0px;
-  z-index: -1;
-}
-#main-navigation a:hover::before {
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-}
-#main-header span {
-  color: #f4faff;
-  animation: lightUp 0.75s 1.25s;
-  animation-fill-mode: forwards;
+	animation-delay: 0.6s;
 }
 /* end Header */
 
 /* About section */
 #about {
-  background: #dad2d8;
+	background: #dad2d8;
 }
 /* end about section */
 
 /* Skill section */
 #skills ul {
-  background: #ffffff;
-  border-radius: 1em;
-  box-shadow: 5px 5px #dad2d877;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  list-style-type: none;
-  margin: 0px;
-  padding: 0.5em;
+	background: #ffffff;
+	border-radius: 1em;
+	box-shadow: 5px 5px #dad2d877;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	list-style-type: none;
+	margin: 0px;
+	padding: 0.5em;
 }
 .skills-section:first-child {
-  margin-right: 2em;
+	margin-right: 2em;
 }
 #skills li {
-  padding: 0.5em;
+	padding: 0.5em;
 }
 #skills-container {
-  display: flex;
+	display: flex;
 }
 #skills-container section {
-  flex: 1;
+	flex: 1;
 }
 
+/* projects list on home styles */
+#project-list {
+	display: grid;
+	grid-auto-rows: 1fr;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2em;
+	list-style-type: none;
+	margin: 1em 0px 0px 0px;
+	padding: 0px;
+}
+#project-list li {
+	border-radius: 0.75em;
+	margin: 0px;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.2s ease-in-out;
+}
+#project-list li:hover {
+	transform: scale(1.05);
+}
+#project-list a:hover img {
+	filter: brightness(1);
+}
+#project-list img {
+	display: block;
+	filter: brightness(0.75);
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.2s ease-in-out;
+	width: 100%;
+}
+#project-list span {
+	background: var(--black);
+	border: 2px solid var(--white);
+	border-radius: 0.75em;
+	color: var(--white);
+	display: block;
+	font-size: 1em;
+	left: 50%;
+	opacity: 0.85;
+	padding: 1em;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: fit-content;
+	z-index: 1;
+}
+.disclaimer {
+	font-style: italic;
+	opacity: 0.9;
+}
+.tech-list,
+.tech-list li {
+	display: inline;
+	margin: 0px;
+}
+.tech-list li::after {
+	content: ", ";
+}
+.tech-list li:last-child::after {
+	content: "";
+}
+/* contact/footer styles */
 #contact {
-  background: #201a23;
-  color: #f4faff;
+	background: var(--black);
+	color: var(--white);
 }
-
 #contact h2 {
-  color: #f4faff;
+	color: var(--white);
+	font-size: 1.25em;
 }
+/* end contact/footer */
 
 /* project pages */
 .screenshot-list {
-  margin: 0px;
-  padding: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 .screenshot-list img {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
+	width: 100%;
+	object-fit: contain;
 }
 .screenshot-row {
-  display: flex;
+	display: flex;
 }
-.screenshow-row div:not(last-child) {
-  margin-right: 1em;
+.screenshot-row:not(:last-child) {
+	margin-bottom: 1em;
 }
-.screenshot-twothirds {
-  flex: 2;
+.screenshot-row div:not(:last-child) {
+	margin-right: 1em;
 }
-.screenshot-onethird {
-  flex: 1;
+.project-link {
+	border: 2px solid var(--purple);
+	border-radius: 1em;
+	color: var(--purple);
+	padding: 0.5em;
+	position: relative;
+	transition: all 0.2s ease-in-out;
+	z-index: 1;
 }
+.project-link:hover {
+	background: transparent;
+	border: 2px solid var(--lightblue);
+	color: var(--lightblue);
+}
+.project-link.really-fancy-link::before {
+	background: var(--purple);
+}
+.project-link-container {
+	text-align: right;
+}
+/* end projects pages */
+
 /* Media queries */
 @media all and (max-width: 768px) {
-  body {
-    font-size: 2.125rem;
-  }
-  #main-header span {
-    display: block;
-  }
-  #skills-container section:first-child {
-    margin-right: 0;
-    margin-bottom: 1em;
-  }
-  #skills-container {
-    display: block;
-  }
+	body {
+		font-size: 2.125rem;
+	}
+	#main-header span {
+		display: block;
+	}
+	#skills-container section:first-child {
+		margin-right: 0;
+		margin-bottom: 1em;
+	}
+	#skills-container {
+		display: block;
+	}
+	#project-list {
+		grid-template-columns: 1fr;
+	}
 }
 @media all and (max-width: 480px) {
-  body {
-    font-size: 2rem;
-  }
-  #skills ul {
-    display: block;
-  }
+	body {
+		font-size: 2rem;
+	}
+	#skills ul {
+		display: block;
+	}
 }
 /* end media queries */
