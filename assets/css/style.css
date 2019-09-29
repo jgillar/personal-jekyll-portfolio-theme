@@ -47,7 +47,7 @@ h3 {
 a {
 	color: var(--pink);
 	text-decoration: none;
-	transition: all 0.5s;
+	transition: all 0.2s;
 }
 main a:hover {
 	background: var(--white);
@@ -294,6 +294,9 @@ li {
 	margin: 1em 0px 0px 0px;
 	padding: 0px;
 }
+#project-list a {
+	opacity: initial;
+}
 #project-list li {
 	border-radius: 0.75em;
 	margin: 0px;
@@ -351,10 +354,20 @@ li {
 #contact {
 	background: var(--black);
 	color: var(--white);
+	text-align: center;
 }
 #contact h2 {
 	color: var(--white);
 	font-size: 1.25em;
+}
+#contact .content-inner {
+	opacity: 0.9;
+}
+#contact a:hover {
+	color: var(--lightblue);
+}
+#social-media {
+	text-align: right;
 }
 /* end contact/footer */
 
