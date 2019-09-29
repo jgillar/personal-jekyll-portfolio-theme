@@ -1,22 +1,25 @@
 // animate smooth scrolling to an element on the page
 // adapted from here: https://jsfiddle.net/s61x7c4e/
-function doScrolling(element, duration) {
-	var startingY = window.pageYOffset;
-	var elementY = window.pageYOffset + element.getBoundingClientRect().top;
+let doScrolling = (element, duration) => {
+	if (element == null) {
+		return false;
+	}
+	let startingY = window.pageYOffset;
+	let elementY = window.pageYOffset + element.getBoundingClientRect().top;
 	// If element is close to page's bottom then window will scroll only to some position above the element.
-	var targetY =
+	let targetY =
 		document.body.scrollHeight - elementY < window.innerHeight
 			? document.body.scrollHeight - window.innerHeight
 			: elementY;
-	var diff = targetY - startingY;
+	let diff = targetY - startingY;
 	// Easing function: easeInOutCubic
 	// From: https://gist.github.com/gre/1650294
-	var easing = function(t) {
+	let easing = t => {
 		return t < 0.5
 			? 4 * t * t * t
 			: (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 	};
-	var start;
+	let start;
 
 	if (!diff) return;
 
@@ -24,9 +27,9 @@ function doScrolling(element, duration) {
 	window.requestAnimationFrame(function step(timestamp) {
 		if (!start) start = timestamp;
 		// Elapsed miliseconds since start of scrolling.
-		var time = timestamp - start;
+		let time = timestamp - start;
 		// Get percent of completion in range [0, 1].
-		var percent = Math.min(time / duration, 1);
+		let percent = Math.min(time / duration, 1);
 		// Apply the easing.
 		// It can cause bad-looking slow frames in browser performance tool, so be careful.
 		percent = easing(percent);
@@ -38,7 +41,7 @@ function doScrolling(element, duration) {
 			window.requestAnimationFrame(step);
 		}
 	});
-}
+};
 
 window.addEventListener("load", () => {
 	let navigationLinks = document.querySelectorAll("#main-navigation a");
@@ -46,10 +49,7 @@ window.addEventListener("load", () => {
 	navigationLinks.forEach(link => {
 		link.addEventListener("click", function() {
 			let target = this.href.slice(this.href.indexOf("#") + 1);
-			console.log(target);
-			console.dir(document.getElementById(target));
 			doScrolling(document.getElementById(target), 1250);
-
 			return false;
 		});
 	});
@@ -84,6 +84,6 @@ window.addEventListener("load", () => {
 	let address = "amFtaWUuZ2lsbGFyQGdtYWlsLmNvbQ=="; //base64 encoded
 	let start = "bWFpbHRv";
 	let emailElement = document.getElementById("mail");
-	emailElement.href = start + ":" + atob(address);
+	emailElement.href = atob(start) + ":" + atob(address);
 	emailElement.innerHTML = "" + atob(address);
 });
