@@ -23,10 +23,12 @@ h1,
 h2,
 h3 {
 	font-family: "Amaranth", sans-serif;
-	letter-spacing: 1px;
+	font-weight: bold;
 	margin-bottom: 0.5em;
 	margin-top: 0px;
 	text-align: center;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 }
 h1 {
 	color: var(--white);
@@ -254,8 +256,8 @@ li {
 }
 /* end Header */
 
-/* About section */
-#about {
+/* About/about project section */
+.main-section:first-child {
 	background: #dad2d8;
 }
 /* end about section */

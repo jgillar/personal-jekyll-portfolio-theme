@@ -45,12 +45,13 @@ let doScrolling = (element, duration) => {
 
 window.addEventListener("load", () => {
 	let navigationLinks = document.querySelectorAll("#main-navigation a");
-	console.log(navigationLinks);
 	navigationLinks.forEach(link => {
-		link.addEventListener("click", function() {
+		link.addEventListener("click", function(event) {
 			let target = this.href.slice(this.href.indexOf("#") + 1);
-			doScrolling(document.getElementById(target), 1250);
-			return false;
+			if (document.getElementById(target) != null) {
+				doScrolling(document.getElementById(target), 1250);
+				event.preventDefault();
+			}
 		});
 	});
 
