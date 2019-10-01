@@ -330,6 +330,7 @@ li {
 	display: block;
 	font-size: 1em;
 	left: 50%;
+	max-width: 60%;
 	opacity: 0.85;
 	padding: 1em;
 	position: absolute;
