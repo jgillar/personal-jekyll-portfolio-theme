@@ -438,6 +438,14 @@ li {
 }
 /* end projects pages */
 
+/* 404 page */
+figure img {
+	width: 100%;
+}
+figcaption {
+	font-style: italic;
+	text-align: center;
+}
 /* Media queries */
 @media all and (max-width: 768px) {
 	body {
