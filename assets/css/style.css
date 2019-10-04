@@ -307,6 +307,7 @@ li {
 	overflow: hidden;
 	position: relative;
 	transition: all 0.2s ease-out;
+	-webkit-mask-image: -webkit-radial-gradient(white, black); /* fixes border-radius breaking in Chrome */
 }
 #project-list li:hover {
 	transform: scale(1.05);
