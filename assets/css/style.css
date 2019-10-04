@@ -196,7 +196,7 @@ li {
 #main-header h1 a {
 	color: var(--lightblue);
 	animation: stayWhite 1s, lightUp 0.75s 1s;
-	transition: color 0.5s;
+	transition: color 0.5s, text-decoration-color .5s;
 	text-decoration: underline;
 	text-decoration-color: transparent;
 }
