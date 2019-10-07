@@ -15,9 +15,7 @@ let doScrolling = (element, duration) => {
 	// Easing function: easeInOutCubic
 	// From: https://gist.github.com/gre/1650294
 	let easing = t => {
-		return t < 0.5
-			? 4 * t * t * t
-			: (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+		return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 	};
 	let start;
 
@@ -43,7 +41,7 @@ let doScrolling = (element, duration) => {
 	});
 };
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
 	let navigationLinks = document.querySelectorAll("#main-navigation a");
 	navigationLinks.forEach(link => {
 		link.addEventListener("click", function(event) {
@@ -59,15 +57,17 @@ window.addEventListener("load", () => {
 	if (document.body.className.indexOf("project") != -1) {
 		let images = document.querySelectorAll(".screenshot-row img");
 		images.forEach(img => {
-			let aspectRatio = img.width / img.height;
-			img.parentElement.style.flex = aspectRatio + " 1 0";
+			//have to wait for images to load before changing their container's widths
+			//otherwise naturalHeight/Width is 0
+			img.addEventListener("load", event => {
+				let aspectRatio = img.naturalWidth / img.naturalHeight;
+				img.parentElement.style.flex = aspectRatio + " 1 0";
+			});
 		});
 
 		//lightbox
-		//querySelectorAll returns a NodeList so we need to conver it to an array
-		let imgListArr = [].slice.call(
-			document.querySelectorAll(".screenshot-list img")
-		);
+		//querySelectorAll returns a NodeList so we need to convert it to an array
+		let imgListArr = [].slice.call(document.querySelectorAll(".screenshot-list img"));
 		let imgList = imgListArr.map(img => img.src);
 		let SimpleLightbox = window.SimpleLightbox;
 		imgListArr.forEach((img, index) => {
