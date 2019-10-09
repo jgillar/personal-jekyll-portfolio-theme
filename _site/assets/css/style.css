@@ -1,0 +1,481 @@
+:root {
+	--purple: #3c225f;
+	--black: #201a23;
+	--lightblue: #2ce3e5;
+	--pink: #dd4f6c;
+	--white: #f4faff;
+}
+html {
+	color: var(--black);
+	font-size: 62.5%;
+}
+body {
+	background: var(--purple);
+	font-family: "Titillium Web", sans-serif;
+	font-size: 2.25rem;
+	line-height: 1.6;
+}
+*::selection {
+	background-color: var(--pink);
+	color: var(--white);
+}
+h1,
+h2,
+h3 {
+	font-family: "Amaranth", sans-serif;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	margin-top: 0px;
+	text-align: center;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+h1 {
+	color: var(--white);
+	font-size: 2.5em;
+	line-height: 1.125;
+}
+h2 {
+	color: var(--purple);
+	font-size: 1.5em;
+	line-height: 1.25;
+}
+h3 {
+	font-family: "Titillium Web", sans-serif;
+	font-size: 1.05em;
+	font-weight: bold;
+	line-height: 1.35;
+}
+a {
+	color: var(--pink);
+	text-decoration: none;
+	transition: all 0.2s;
+}
+main a:hover {
+	background: var(--white);
+	color: #10a3a5;
+	opacity: 0.9;
+}
+p {
+	margin-top: 0px;
+	margin-bottom: 0.5em;
+}
+ul {
+	margin: 0 0 1em 1.5em;
+	padding: 0px;
+}
+li {
+	margin-bottom: 0.05em;
+}
+
+.wrapper {
+	margin: 0px auto;
+}
+.main-section {
+	background: #eef0f2;
+	padding: 2em 2em;
+}
+.content-inner {
+	margin: 0px auto;
+	max-width: 1200px;
+	width: 100%;
+}
+/* links with that cool animated background */
+.really-fancy-link::before {
+	content: " ";
+	background: var(--white);
+	border-radius: 1em;
+	height: 0px;
+	left: 50%;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.3s;
+	width: 0px;
+	z-index: -1;
+}
+.really-fancy-link:hover::before {
+	height: 100%;
+	width: 100%;
+	opacity: 1;
+}
+/*  Header section  */
+/*  slide in animation for header text  */
+@keyframes slideDown {
+	0% {
+		transform: translate(0, -0.5em);
+		opacity: 0;
+	}
+	100% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+/*  slide up animation for navigation links */
+@keyframes slideUp {
+	0% {
+		transform: translate(0, 0.5em);
+		opacity: 0;
+	}
+	100% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+/*  background animation for header */
+@keyframes gradientBackground {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+/*  animation for my name turning blue  */
+@keyframes lightUp {
+	0% {
+		color: var(--white);
+	}
+	100% {
+		color: var(--lightblue);
+	}
+}
+/*  this is a hacky way to avoid using animation-fill-mode: forwards  
+    since that prevents styling after the animation is done */
+@keyframes stayWhite {
+	0% {
+		color: var(--white);
+	}
+	100% {
+		color: var(--white);
+	}
+}
+#main-header {
+	background: radial-gradient(
+			farthest-side at bottom left,
+			#dc4c6a77,
+			transparent
+		),
+		radial-gradient(farthest-corner at top right, #321c4e, transparent);
+	background-size: 400% 400%;
+	box-sizing: border-box;
+	color: var(--white);
+	padding: 2em 2em 1em 2em;
+	text-align: center;
+	transform: translate3d(0, 0, 0); /* hack to reduce CPU usage */
+	will-change: background;
+	animation: gradientBackground 15s ease infinite;
+}
+#main-header h1,
+#main-header p {
+	animation: slideDown 1s;
+}
+#main-header *::selection {
+	background: var(--white);
+	color: var(--purple);
+}
+#main-header .wrapper {
+	justify-content: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+/* make header full size only on home page */
+.home #main-header {
+	height: 100vh;
+}
+.home #main-header .content-inner {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+#main-header h1 a {
+	color: var(--lightblue);
+	animation: stayWhite 1s, lightUp 0.75s 1s;
+	transition: color 0.5s, text-decoration-color .5s;
+	text-decoration: underline;
+	text-decoration-color: transparent;
+}
+
+#main-header h1 a:hover {
+	color: var(--pink);
+	text-decoration-color: var(--pink);
+}
+#main-header p {
+	margin-bottom: 2em;
+}
+#main-navigation {
+	align-self: stretch;
+}
+#main-navigation ul {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+#main-navigation li {
+	flex: 1;
+	margin: 0;
+	padding: 0;
+}
+#main-navigation a {
+	box-sizing: border-box;
+	color: var(--white);
+	display: inline-block;
+	padding: 0.25em 0.5em;
+	position: relative;
+	text-align: center;
+	transition: color 0.3s;
+	z-index: 1;
+}
+#main-navigation li {
+	animation-fill-mode: forwards !important; /* fill mode styles DO NOT override existing styles */
+	opacity: 0;
+	animation: slideUp 0.5s;
+}
+#main-navigation a:hover {
+	color: var(--purple);
+}
+#main-navigation li:nth-child(1) {
+	animation-delay: 0.3s;
+}
+#main-navigation li:nth-child(2) {
+	animation-delay: 0.4s;
+}
+#main-navigation li:nth-child(3) {
+	animation-delay: 0.5s;
+}
+#main-navigation li:nth-child(4) {
+	animation-delay: 0.6s;
+}
+/* end Header */
+
+/* About/about project section */
+.main-section:first-child {
+	background: #dad2d8;
+}
+/* end about section */
+
+/* Skill section */
+#skills ul {
+	background: #ffffff;
+	border-radius: 1em;
+	box-shadow: 5px 5px #dad2d877;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	list-style-type: none;
+	margin: 0px;
+	padding: 0.5em;
+}
+.skills-section:first-child {
+	margin-right: 2em;
+}
+#skills li {
+	padding: 0.5em;
+}
+#skills-container {
+	display: flex;
+}
+#skills-container section {
+	flex: 1;
+}
+
+/* projects list on home styles */
+#project-list {
+	display: grid;
+	grid-auto-rows: 1fr;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2em;
+	list-style-type: none;
+	margin: 1em 0px 0px 0px;
+	padding: 0px;
+}
+#project-list a {
+	opacity: initial;
+}
+#project-list li {
+	border-radius: 0.75em;
+	margin: 0px;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.2s ease-out;
+	-webkit-mask-image: -webkit-radial-gradient(white, black); /* fixes border-radius breaking in Chrome */
+}
+#project-list li:hover {
+	transform: scale(1.05);
+}
+#project-list a:hover img {
+	filter: brightness(1);
+}
+#project-list img {
+	display: block;
+	filter: brightness(0.75);
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.2s ease-in-out;
+	width: 100%;
+}
+#project-list span {
+	background: var(--black);
+	border: 2px solid var(--white);
+	border-radius: 0.75em;
+	color: var(--white);
+	display: block;
+	font-size: 1em;
+	left: 50%;
+	max-width: 60%;
+	opacity: 0.85;
+	padding: 1em;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: fit-content;
+	z-index: 1;
+}
+.disclaimer {
+	font-style: italic;
+	opacity: 0.9;
+}
+.tech-list,
+.tech-list li {
+	display: inline;
+	margin: 0px;
+}
+.tech-list li::after {
+	content: ", ";
+}
+.tech-list li:last-child::after {
+	content: "";
+}
+/* contact/footer styles */
+#contact {
+	background: var(--black);
+	color: var(--white);
+	text-align: center;
+}
+#contact h2 {
+	color: var(--white);
+	font-size: 1.25em;
+}
+#contact .content-inner {
+	opacity: 0.9;
+}
+#contact a:hover {
+	color: var(--lightblue);
+}
+#social-media {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	text-align: right;
+}
+#social-media li {
+	display: inline-block;
+	height: 1.25em;
+	opacity: 0.9;
+	padding: 0.25em 0.5em;
+	width: 1.25em;
+}
+/* can't change SVG fill directly, can do it by abusing filters */
+#social-media a {
+	filter: invert(90%) sepia(1%) saturate(6192%) hue-rotate(195deg)
+		brightness(105%) contrast(110%);
+	transition: all 0.5s;
+}
+#social-media a:hover {
+	filter: brightness(0) saturate(100%) invert(100%) sepia(57%) saturate(4791%)
+		hue-rotate(130deg) brightness(92%) contrast(95%);
+}
+/* end contact/footer */
+
+/* project pages */
+.screenshot-list {
+	margin: 0px;
+	padding: 0px;
+}
+.screenshot-list img {
+	width: 100%;
+	object-fit: contain;
+}
+.screenshot-row {
+	display: flex;
+}
+.screenshot-row:not(:last-child) {
+	margin-bottom: 1em;
+}
+.screenshot-row div:not(:last-child) {
+	margin-right: 1em;
+}
+.project-link {
+	border: 2px solid var(--purple);
+	border-radius: 1em;
+	color: var(--purple);
+	display: inline-block;
+	margin-top: 0.5em;
+	padding: 0.5em;
+	position: relative;
+	transition: all 0.2s ease-in-out;
+	z-index: 1;
+}
+.project-link:hover {
+	background: transparent;
+	border: 2px solid var(--lightblue);
+	color: var(--lightblue);
+}
+.project-link.really-fancy-link::before {
+	background: var(--purple);
+}
+.project-link-container {
+	text-align: right;
+}
+/* end projects pages */
+
+/* 404 page */
+figure img {
+	width: 100%;
+}
+figcaption {
+	font-style: italic;
+	text-align: center;
+}
+
+/* Media queries */
+@media all and (max-width: 768px) {
+	body {
+		font-size: 2.125rem;
+	}
+	#main-header span {
+		display: block;
+	}
+	#skills-container section:first-child {
+		margin-right: 0;
+		margin-bottom: 1em;
+	}
+	#skills-container {
+		display: block;
+	}
+	#project-list {
+		grid-template-columns: 1fr;
+	}
+	#social-media {
+		text-align: center;
+	}
+}
+@media all and (max-width: 480px) {
+	body {
+		font-size: 2rem;
+	}
+	#skills ul {
+		display: block;
+	}
+}
+/* end media queries */
