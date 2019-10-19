@@ -1,3 +1,5 @@
+var SimpleLightbox = require("simple-lightbox");
+
 // animate smooth scrolling to an element on the page
 // adapted from here: https://jsfiddle.net/s61x7c4e/
 let doScrolling = (element, duration) => {
@@ -69,7 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		//querySelectorAll returns a NodeList so we need to convert it to an array
 		let imgListArr = [].slice.call(document.querySelectorAll(".screenshot-list img"));
 		let imgList = imgListArr.map(img => img.src);
-		let SimpleLightbox = window.SimpleLightbox;
+
 		imgListArr.forEach((img, index) => {
 			img.addEventListener("click", function(event) {
 				SimpleLightbox.open({

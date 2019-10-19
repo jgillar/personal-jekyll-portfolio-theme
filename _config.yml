@@ -49,8 +49,12 @@ exclude:
     - Gemfile
     - Gemfile.lock
     - webpack/
+    - node_modules/
     - assets/scripts/
     - assets/css/
+    - .babelrc
+    - .browserslistrc
+    - package*.json
 #   - node_modules/
 #   - vendor/bundle/
 #   - vendor/cache/

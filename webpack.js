@@ -7,18 +7,18 @@ const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-	mode: "development",
+	mode: "production",
 	entry: {
-		main: path.resolve(__dirname, "../assets/scripts/index.js")
+		main: path.resolve(__dirname, "assets/scripts/index.js")
 	},
 	output: {
 		filename: "index.js",
-		path: path.resolve(__dirname, "../assets/build")
+		path: path.resolve(__dirname, "assets/build")
 	},
 	optimization: {
 		minimizer: [
-			new OptimizeCssAssetsPlugin()
-			//new TerserPlugin() //the deafult JS optimizer
+			new OptimizeCssAssetsPlugin(),
+			new TerserPlugin() //the deafult JS optimizer
 		]
 	},
 	module: {
@@ -26,7 +26,11 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: "babel-loader"
+				loader: "babel-loader",
+				options: {
+					babelrc: true,
+					extends: path.resolve(__dirname, ".babelrc")
+				}
 			},
 			{
 				test: /\.(css|scss)$/,
