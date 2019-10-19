@@ -48,13 +48,13 @@ exclude:
     #   - gemfiles/
     - Gemfile
     - Gemfile.lock
-    - webpack/
     - node_modules/
     - assets/scripts/
     - assets/css/
     - .babelrc
     - .browserslistrc
     - package*.json
+    - webpack.js
 #   - node_modules/
 #   - vendor/bundle/
 #   - vendor/cache/
